@@ -1,0 +1,26 @@
+<div class="container">
+	<div *ngIf= "!submitted">
+		<md-grid-list cols = "6" [style.margin-top] = "'20px'" >
+			<md-grid-tile [colspan] = "1"></md-grid-tile>
+			<md-grid-tile [colspan] = "4">
+				<form name="userForm" (ngSubmit) = "onSubmit()">
+					<md-input-container class="full-width">
+						<input type="text" mdInput [(ngModel)]="user.url" required 
+						 name="url" id='url' placeholder="Amazon URL">
+					</md-input-container>
+					<md-input-container class="full-width">
+						<input type="email" mdInput [(ngModel)]="user.email"
+						 name="email" id='email' required placeholder="Your Email">
+					</md-input-container>
+					<button md-raised-button type="submit" class="mat-primary" ng-disabled="userForm.$invalid" >Submit</button>
+				</form>
+			</md-grid-tile>		
+		</md-grid-list>
+	</div>
+	<div *ngIf= "submitted" class="alert alert-success">
+	Your request is submitted successfully!
+	</div>
+	<div *ngIf= "submitted">
+	Do you want to create another request? <a href="!submitted"> Click here</a>
+	</div>
+</div>
